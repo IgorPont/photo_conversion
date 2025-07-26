@@ -20,6 +20,9 @@ htmlcov/
 # Mac system files
 .DS_Store
 
+# PyCharm system files
+.idea/
+
 # VSCode settings (optional)
 .vscode/
 
