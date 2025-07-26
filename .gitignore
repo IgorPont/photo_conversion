@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+
+# Poetry lock backup
+poetry.lock.bak
+
+# Test cache and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Mac system files
+.DS_Store
+
+# VSCode settings (optional)
+.vscode/
+
+# Ignore all user-converted files
+objects_to_convert/

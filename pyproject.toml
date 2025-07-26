@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "photo-conversion"
+version = "0.1.0"
+description = "CLI для обработки изображений"
+authors = ["igor_pont <pontigor11@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pillow = "^11.3.0"
+pillow-heif = "^1.0.0"
+typer = {extras = ["all"], version = "^0.16.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+pytest = "^8.4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
