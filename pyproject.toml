@@ -5,13 +5,13 @@ description = "CLI для обработки изображений"
 authors = ["igor_pont <pontigor11@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false  # CLI-проект без упаковки как Python-пакет
 
 [tool.poetry.dependencies]
 python = "^3.13"
 pillow = "^11.3.0"
 pillow-heif = "^1.0.0"
 typer = {extras = ["all"], version = "^0.16.0"}
-
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"

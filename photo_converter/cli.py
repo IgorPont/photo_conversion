@@ -23,12 +23,12 @@ def configure_logging(verbose: bool, log_file: Path | None):
 
 @app.command()
 def process(
-    dcim_path: Path = typer.Argument(..., help="Путь к директории DCIM"),
-    dry_run: bool = typer.Option(
-        False, "--dry-run", help="Только логировать действия, ничего не менять"
-    ),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Подробный вывод"),
-    log_file: Path = typer.Option(None, "--log-file", help="Путь к лог-файлу"),
+        dcim_path: Path = typer.Argument(..., help="Путь к директории DCIM"),
+        dry_run: bool = typer.Option(
+            False, "--dry-run", help="Только логировать действия, ничего не менять"
+        ),
+        verbose: bool = typer.Option(False, "--verbose", "-v", help="Подробный вывод"),
+        log_file: Path = typer.Option(None, "--log-file", help="Путь к лог-файлу"),
 ):
     """
     Удаляет .NEF и конвертирует .HEIC → .JPG с удалением исходников.
@@ -84,7 +84,3 @@ def process(
     logging.info(f"  Удалено .NEF : {nef_deleted}")
     logging.info(f"  HEIC → JPG   : {heic_converted}")
     logging.info(f"  Всего ПОСЛЕ  : {total_after if not dry_run else total_before}")
-
-
-if __name__ == "__main__":
-    app()
