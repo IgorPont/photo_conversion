@@ -5,7 +5,8 @@ description = "CLI для обработки изображений"
 authors = ["igor_pont <pontigor11@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-package-mode = false  # CLI-проект без упаковки как Python-пакет
+
+packages = [{ include = "photo_converter" }]
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -20,3 +21,8 @@ pytest = "^8.4.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+photo-conversion = "photo_converter.cli:app"
+
+

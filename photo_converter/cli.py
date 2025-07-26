@@ -4,16 +4,14 @@ from PIL import Image
 import pillow_heif
 import typer
 
-# Регистрируем HEIC для Pillow
+# Регистрируем поддержку HEIC для Pillow
 pillow_heif.register_heif_opener()
-
-app = typer.Typer(help="Утилита для удаления .NEF и конвертации .HEIC → .JPG")
 
 
 def configure_logging(verbose: bool, log_file: Path | None):
     handlers = [logging.StreamHandler()]
     if log_file:
-        handlers.append(logging.FileHandler(log_file, encoding="utf-8"))
+        handlers.append(logging.FileHandler(str(log_file), encoding="utf-8"))
     logging.basicConfig(
         level=logging.DEBUG if verbose else logging.INFO,
         format="%(message)s",
@@ -21,12 +19,9 @@ def configure_logging(verbose: bool, log_file: Path | None):
     )
 
 
-@app.command()
-def process(
+def main(
         dcim_path: Path = typer.Argument(..., help="Путь к директории DCIM"),
-        dry_run: bool = typer.Option(
-            False, "--dry-run", help="Только логировать действия, ничего не менять"
-        ),
+        dry_run: bool = typer.Option(False, "--dry-run", help="Только логировать действия, ничего не менять"),
         verbose: bool = typer.Option(False, "--verbose", "-v", help="Подробный вывод"),
         log_file: Path = typer.Option(None, "--log-file", help="Путь к лог-файлу"),
 ):
@@ -84,3 +79,7 @@ def process(
     logging.info(f"  Удалено .NEF : {nef_deleted}")
     logging.info(f"  HEIC → JPG   : {heic_converted}")
     logging.info(f"  Всего ПОСЛЕ  : {total_after if not dry_run else total_before}")
+
+
+if __name__ == "__main__":
+    typer.run(main)
