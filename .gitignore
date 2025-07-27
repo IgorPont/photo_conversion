@@ -28,3 +28,6 @@ htmlcov/
 
 # Ignore all user-converted files
 objects_to_convert/
+
+# Ignore all output files
+output/

@@ -67,10 +67,14 @@ def rename_images(
         dcim_path: Path = typer.Argument(..., help="Путь к директории DCIM"),
         output_dir: Path = typer.Argument(..., help="Папка, куда сохранить итоговые изображения"),
         dry_run: bool = typer.Option(False, "--dry-run", help="Только логировать действия, не копировать файлы"),
+        verbose: bool = typer.Option(False, "--verbose", "-v", help="Подробный вывод"),
+        log_file: Path = typer.Option(None, "--log-file", help="Путь к лог-файлу"),
 ):
     """
     Обходит подпапки DCIM, сортирует изображения и копирует их в новую папку с последовательной нумерацией.
     """
+
+    configure_logging(verbose, log_file)
     rename_and_collect_images(dcim_path, output_dir, dry_run=dry_run)
 
 
